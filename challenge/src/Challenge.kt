@@ -1,7 +1,12 @@
 
 import java.util.*
 
-
+/**
+ * @author Miguel Aguilera
+ *
+ * Solution for the coding challenge on conditionals inside the Udemy course.
+ * Generate a random number between 0 and 49 and checks in which range it is.
+ */
 fun main(args: Array<String>) {
     val random = Random().nextInt(50) +1
 
