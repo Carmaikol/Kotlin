@@ -4,10 +4,21 @@ import java.util.*
 /**
  * @author Miguel Aguilera
  *
- * Solution for the coding challenge on conditionals inside the Udemy course.
- * Generate a random number between 0 and 49 and checks in which range it is.
+ * Solutions for the coding challenges  inside the Udemy course.
  */
 fun main(args: Array<String>) {
+
+    //conditionals()
+    loops()
+
+}
+
+
+/**
+ *  Conditionals
+ * Generate a random number between 0 and 49 and checks in which range it is.
+ */
+fun conditionals(){
     val random = Random().nextInt(50) +1
 
     val result = when(random) {
@@ -19,6 +30,20 @@ fun main(args: Array<String>) {
     }
 
     println(result)
+}
 
+
+/**
+ *  Loops
+ *  write a program that calculates the sum of all
+ *  numbers from 100 to 100,000 and prints out the result.
+ */
+fun loops(){
+
+    var result: Int = 0
+    for(i in 100..100000){
+        result += i
+    }
+    println("Result: $result")
 
 }
