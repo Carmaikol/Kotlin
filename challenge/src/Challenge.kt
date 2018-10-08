@@ -40,10 +40,10 @@ fun conditionals(){
  */
 fun loops(){
 
-    var result: Int = 0
+    var result: Long = 0            // Bad result with Int
     for(i in 100..100000){
         result += i
     }
-    println("Result: $result")
+    println("Result: $result")      // 5000045050
 
 }
