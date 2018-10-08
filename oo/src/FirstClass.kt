@@ -1,10 +1,11 @@
 
 
 
-class Person{
-    var name: String = "Sarah"
-    var age: Int = 42
+class Person(val name: String, var age: Int){
 
+    init{
+        println("Object was created")
+    }
 
     fun speak() {
         println("Hello")
@@ -15,18 +16,13 @@ class Person{
         println("Hello $name!")
     }
 
-  //  fun getYearOfBirth(): Int {
-
-    //    return 2018 - age
-    //}
-
-    fun getYearOfBirth() = 2016 - age
+    fun getYearOfBirth() = 2018 - age
 
 }
 
 
 fun main(args: Array<String>) {
-    val person = Person()
+    val person = Person("Jack",17)
     println(person.name)
     println(person.age)
 
@@ -35,7 +31,10 @@ fun main(args: Array<String>) {
     person.greet("world")
     println(person.getYearOfBirth())
 
-    person.name = "Peter"
     println(person.name)
+    println(person.age)
+
+
+
 
 }

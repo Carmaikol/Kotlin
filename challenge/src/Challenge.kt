@@ -10,7 +10,8 @@ fun main(args: Array<String>) {
 
     //conditionals()
     //loops()
-    recapBasics()
+    //recapBasics()
+    books()
 
 }
 
@@ -68,3 +69,68 @@ fun recapBasics(){
     }
 
 }
+
+
+/**
+ * Classes.
+ * Create a class representing a book. Every book has a title, an author, a
+ * publication year and is either borrowed or not. Choose an appropriate
+ * data type for each of these properties.
+ *  A book can be borrowed from you or returned to you. In both cases, the
+ *  borrowed property is updated accordingly. Also, a book should be able
+ *  to print itself to the command line, including its title, author, and
+ *  publication year.
+ */
+
+fun books(){
+    val book = Book("The Dark Tower","Stephen King",1982,false)
+    val book2 = Book("Rayuela","Julio Cortazar",1963,true)
+    val book3 = Book("1984","George Orwell",1948,false)
+
+
+    book.print()
+    book.borrow()
+
+    book.print()
+    book2.borrow()
+    book2.returnBook()
+
+    book3.print()
+    book3.returnBook()
+
+}
+
+class Book(val title:String, val author: String, val publicationYear: Int, var isBorrowed:Boolean){
+
+    fun print(){
+        println("BOOK = [Title: $title , Author: $author , Publication Year: $publicationYear]")
+    }
+
+    fun borrow(): Boolean{
+        return if(isBorrowed){
+            println("Oops, this book is already borrowed")
+            false
+        }else{
+            isBorrowed = true
+            true
+        }
+
+    }
+
+
+    fun returnBook(): Boolean{
+        return if(!isBorrowed){
+            println("Oops, this book was not borrowed")
+            false
+        }else{
+            isBorrowed = false
+            true
+        }
+
+    }
+
+
+
+
+}
+
