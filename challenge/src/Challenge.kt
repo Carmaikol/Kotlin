@@ -9,7 +9,8 @@ import java.util.*
 fun main(args: Array<String>) {
 
     //conditionals()
-    loops()
+    //loops()
+    recapBasics()
 
 }
 
@@ -45,5 +46,25 @@ fun loops(){
         result += i
     }
     println("Result: $result")      // 5000045050
+
+}
+
+/**
+ * Recap the basics.
+ * Create an array list of your favorite book titles. Loop over this list and, if
+ * the title contains the letter ‘e’, print each character of the name on a new
+ * line.
+ */
+fun recapBasics(){
+    val bookList = arrayListOf("Song of Ice and Fire","The Dark Tower","1984","Rayuela","Los Detectives Salvajes","The Art of War","Tao Te Ching", "I Ching")
+
+    for(book in bookList){
+        if(book.contains('e')){
+            for(char in book){
+                println(char)
+            }
+            println("-")                //Better readability
+        }
+    }
 
 }
