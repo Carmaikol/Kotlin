@@ -1,43 +1,57 @@
 
 
 
-open class Person(open val name: String, open var age: Int){
+abstract class PersonA(open val name: String, open var age: Int){
 
     init{
         println("Object was created")
     }
 
-    fun speak() {
-        println("Hello")
-    }
+    abstract fun speak()
 
 
-    fun greet(name: String) {
+    open fun greet(name: String) {
         println("Hello $name!")
     }
 
     fun getYearOfBirth() = 2018 - age
 
- 
-
 }
 
 
 
-class Student(override val name: String,override var age: Int, val studentId: Long): Person(name,age){
+class StudentA(override val name: String,override var age: Int, val studentId: Long): PersonA(name,age){
+    override fun speak() {
+        println("Hi there, Im a student")
+    }
+
+    override fun greet(name: String) {
+        println("Howdy $name")
+    }
 
     fun isIntelligent() = true
 
 }
 
 
-class Employee(override val name: String,override var age: Int): Person(name,age){
+class EmployeeA(override val name: String,override var age: Int): PersonA(name,age){
 
     fun receivePayment(){
         println("payment received")
     }
 
+    override fun speak() {
+        println("Hi  Im an employee")
+    }
+
 }
+
+
+
+
+
+
+
 
 
 fun main(args: Array<String>) {
