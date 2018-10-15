@@ -1,4 +1,3 @@
-
 import java.util.*
 
 /**
@@ -20,10 +19,10 @@ fun main(args: Array<String>) {
  *  Conditionals
  * Generate a random number between 0 and 49 and checks in which range it is.
  */
-fun conditionals(){
-    val random = Random().nextInt(50) +1
+fun conditionals() {
+    val random = Random().nextInt(50) + 1
 
-    val result = when(random) {
+    val result = when (random) {
         in 1..10 -> "Range is 1 to 10. Number is $random"
         in 11..20 -> "Range is 11 to 20. Number is $random"
         in 21..30 -> "Range is 21 to 30. Number is $random"
@@ -40,10 +39,10 @@ fun conditionals(){
  *  write a program that calculates the sum of all
  *  numbers from 100 to 100,000 and prints out the result.
  */
-fun loops(){
+fun loops() {
 
     var result: Long = 0            // Bad result with Int
-    for(i in 100..100000){
+    for (i in 100..100000) {
         result += i
     }
     println("Result: $result")      // 5000045050
@@ -56,12 +55,12 @@ fun loops(){
  * the title contains the letter ‘e’, print each character of the name on a new
  * line.
  */
-fun recapBasics(){
-    val bookList = arrayListOf("Song of Ice and Fire","The Dark Tower","1984","Rayuela","Los Detectives Salvajes","The Art of War","Tao Te Ching", "I Ching")
+fun recapBasics() {
+    val bookList = arrayListOf("Song of Ice and Fire", "The Dark Tower", "1984", "Rayuela", "Los Detectives Salvajes", "The Art of War", "Tao Te Ching", "I Ching")
 
-    for(book in bookList){
-        if(book.contains('e')){
-            for(char in book){
+    for (book in bookList) {
+        if (book.contains('e')) {
+            for (char in book) {
                 println(char)
             }
             println("-")                //Better readability
@@ -82,10 +81,10 @@ fun recapBasics(){
  *  publication year.
  */
 
-fun books(){
-    val book = Book("The Dark Tower","Stephen King",1982,false)
-    val book2 = Book("Rayuela","Julio Cortazar",1963,true)
-    val book3 = Book("1984","George Orwell",1948,false)
+fun books() {
+    val book = Book("The Dark Tower", "Stephen King", 1982, false,"Fantasy")
+    val book2 = Book("Rayuela", "Julio Cortazar", 1963, true,"Novel")
+    val book3 = Book("1984", "George Orwell", 1948, false,"Mistery")
 
 
     book.print()
@@ -100,29 +99,29 @@ fun books(){
 
 }
 
-class Book(val title:String, val author: String, val publicationYear: Int, var isBorrowed:Boolean){
+class Book(override val title: String, private val author: String, override val publicationYear: Int, override var isBorrowed: Boolean, override val genre: String) : InventoryItem(title, genre, publicationYear,isBorrowed) {
 
-    fun print(){
+    fun print() {
         println("BOOK = [Title: $title , Author: $author , Publication Year: $publicationYear]")
     }
 
-    fun borrow(): Boolean{
-        return if(isBorrowed){
+    override fun borrow() {
+        return if (isBorrowed) {
             println("Oops, this book is already borrowed")
-            false
-        }else{
+
+        } else {
             isBorrowed = true
-            true
+
         }
 
     }
 
 
-    fun returnBook(): Boolean{
-        return if(!isBorrowed){
+    fun returnBook(): Boolean {
+        return if (!isBorrowed) {
             println("Oops, this book was not borrowed")
             false
-        }else{
+        } else {
             isBorrowed = false
             true
         }
@@ -130,7 +129,49 @@ class Book(val title:String, val author: String, val publicationYear: Int, var i
     }
 
 
-
-
 }
 
+
+/**
+ * Object Orientation.
+ * Let’s say we’re running a library where you can lend books and also some
+ * movies. We want to write an application to keep track of our inventory.
+ * Create an interface Lendable that defines a borrow() method. Then create an
+ * abstract class InventoryItem and two classes Book and DVD which inherit from
+ * InventoryItem. InventoryItem should implement the Lendable interface.
+ * Books and DVDs both have a title, genre and publication year. Books also have
+ * an author whereas DVDs have a length in seconds. Add each property to the
+ * most suitable class.
+ */
+interface Lendable {
+    open fun borrow()
+}
+
+abstract class InventoryItem(open val title: String, open val genre: String, open val publicationYear: Int, open var isBorrowed: Boolean) : Lendable
+
+
+class DVD(override val title: String, override val genre: String, override val publicationYear: Int, override var isBorrowed: Boolean, private val length: Int) : InventoryItem(title, genre, publicationYear, isBorrowed) {
+    override fun borrow() {
+        return if (isBorrowed) {
+            println("Oops, this book is already borrowed")
+
+        } else {
+            isBorrowed = true
+
+        }
+
+    }
+
+
+    fun returnBook() {
+        return if (!isBorrowed) {
+            println("Oops, this book was not borrowed")
+
+        } else {
+            isBorrowed = false
+
+        }
+
+    }
+
+}
