@@ -1,9 +1,6 @@
+open class Person(open val name: String, open var age: Int) {
 
-
-
-open class Person(open val name: String, open var age: Int){
-
-    init{
+    init {
         println("Object was created")
     }
 
@@ -18,22 +15,20 @@ open class Person(open val name: String, open var age: Int){
 
     fun getYearOfBirth() = 2018 - age
 
- 
 
 }
 
 
-
-class Student(override val name: String,override var age: Int, val studentId: Long): Person(name,age){
+class Student(override val name: String, override var age: Int, val studentId: Long) : Person(name, age) {
 
     fun isIntelligent() = true
 
 }
 
 
-class Employee(override val name: String,override var age: Int): Person(name,age){
+class Employee(override val name: String, override var age: Int) : Person(name, age) {
 
-    fun receivePayment(){
+    fun receivePayment() {
         println("payment received")
     }
 
@@ -41,7 +36,7 @@ class Employee(override val name: String,override var age: Int): Person(name,age
 
 
 fun main(args: Array<String>) {
-    val person = Person("Jack",17)
+    val person = Person("Jack", 17)
     println(person.name)
     println(person.age)
 
@@ -55,11 +50,11 @@ fun main(args: Array<String>) {
 
     //
 
-    val student = Student("John",25,9999999)
+    val student = Student("John", 25, 9999999)
     student.speak()
 
 
-    val employee = Employee("Mary",32)
+    val employee = Employee("Mary", 32)
     student.getYearOfBirth()
 
     employee.receivePayment()
